@@ -1,46 +1,28 @@
-# All tests pass now
+# Reorganizing lib directory
 
-    git checkout bac22ca3bc69d0b0f8d34668066535e3e4fe8148
-   
-```diff
-   
-   describe 'BodyDecoder'
-     it 'should parse urlencoded bodies'
--      request = mockRequest({ 
-+      request = mockRequest({
-+          method: 'POST',
-           headers : [['Content-Type', 'application/x-www-form-urlencoded']],
-           body : 'user[name]=foo%20bar&status=1'
-         })
-
-```
-
-```diff
-     end
- 
-     it 'should parse JSON bodies'
--      request = mockRequest({ 
-+      request = mockRequest({
-+          method: 'POST',
-           headers : [['Content-Type', 'application/json']],
-           body : '{ foo : "bar" }'
-         })
-
-```
-
-```diff
-   describe 'MethodOverride'
-     it 'should override request method when _method param is present'
--      request = mockRequest({ 
-+      request = mockRequest({
-+          method: 'POST',
-           headers : [['Content-Type', 'application/x-www-form-urlencoded']],
-           body : '_method=delete'
-         })
-       del('foo', function(){ 'Deleted' })
--      post('foo', { request : { body : '_method=delete' }}).body.should.eql 'Deleted'
-+      post('foo', { request : request}).body.should.eql 'Deleted'
-     end
-   end
-
-```
+    git checkout dca7e9bbd17e2d96a081754469d73f49d35a61c8
+    
+``diff
+-require('express.core')
+-require('express.cookie')
+-require('express.mime')
+-require('express.session')
+-require('express.view')
++require('express/core')
++require('express/cookie')
++require('express/mime')
++require('express/session')
++require('express/view')
++
++// --- Core Modules
++
++use(Express.BodyDecoder)
++use(Express.MethodOverride)
++use(Express.ContentLength)
++use(Express.DefaultContentType)
++use(Express.RedirectHelpers)
++use(Express.Mime)
++use(Express.Cookie)
++use(Express.Session)
++use(Express.View)
+``
