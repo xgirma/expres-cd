@@ -75,9 +75,9 @@ Logger
 +    * @api public
 +    */
     
- +   use : function(name, callback) {
- +     this.hookCallbacks[name].push(callback)
- +   },
++   use : function(name, callback) {
++     this.hookCallbacks[name].push(callback)
++   },
     
     /**
      * Start express, binding to _port_.
