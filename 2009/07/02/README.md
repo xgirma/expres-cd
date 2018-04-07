@@ -4,7 +4,7 @@
     
 Logger 
 
-```javascript
+```diff
 (function(){
   Express = { 
     version : '0.0.1',
@@ -67,17 +67,17 @@ Logger
           this.hookCallbacks[name][i].apply(this, this.argsArray(arguments, 1))
     },
     
-    /**
-     * Add middlware _callback_ for hook _name_.
-     *
-     * @param  {string} name
-     * @param  {function} callback
-     * @api public
-     */
+ +   /**
+ +    * Add middlware _callback_ for hook _name_.
+ +    *
+ +    * @param  {string} name
+ +    * @param  {function} callback
+ +    * @api public
+ +    */
     
-    use : function(name, callback) {
-      this.hookCallbacks[name].push(callback)
-    },
+ +   use : function(name, callback) {
+ +     this.hookCallbacks[name].push(callback)
+ +   },
     
     /**
      * Start express, binding to _port_.
@@ -512,11 +512,11 @@ Logger
   
 })()
 
-Logger = function(request, response){
-  puts('"' + request.method + ' /' + request.uri.path + ' HTTP/1.1" - ' + Express.response.status)
-}
++ Logger = function(request, response){
++  puts('"' + request.method + ' /' + request.uri.path + ' HTTP/1.1" - ' + Express.response.status)
++ }
 
-Express.use('response', Logger)
++ Express.use('response', Logger)
 
 get('user/:name/:operation', function(){
  p(request.headers['User-Agent'])
