@@ -67,13 +67,13 @@ Logger
           this.hookCallbacks[name][i].apply(this, this.argsArray(arguments, 1))
     },
     
- +   /**
- +    * Add middlware _callback_ for hook _name_.
- +    *
- +    * @param  {string} name
- +    * @param  {function} callback
- +    * @api public
- +    */
++   /**
++    * Add middlware _callback_ for hook _name_.
++    *
++    * @param  {string} name
++    * @param  {function} callback
++    * @api public
++    */
     
  +   use : function(name, callback) {
  +     this.hookCallbacks[name].push(callback)
