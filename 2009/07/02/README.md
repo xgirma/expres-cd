@@ -4,6 +4,7 @@
     
 Logger 
 
+lib/express.core.js
 ```diff
 (function(){
   Express = { 
