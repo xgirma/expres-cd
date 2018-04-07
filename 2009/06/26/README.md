@@ -2,6 +2,8 @@
 
     git checkout 9998490f93d3ad3d56c00d23c0aa13fac41c3f6b
     
+author: visionmedia <tj@vision-media.ca>
+    
 The initial commit was made on June 26th, 2009 at 11:56:18 AM PDT.
 
 lib/express.core
