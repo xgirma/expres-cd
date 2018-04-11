@@ -82,3 +82,44 @@ get('/user/:id?', function(id) {
 
 run()
 ```
+
+## Add memory usage to Profile
+
+    git checkout afaaf0d1069e52581afdf30c00e80c790ab3c7df
+    
+```javascript
+ // Express - Profiler - Copyright TJ Holowaychuk <tj@vision-media.ca> (MIT Licensed)
+ 
++ function usage(label, stats) {
++  puts(label)
++  puts('  rss        : ' + stats.rss)
++  puts('  vsize      : ' + stats.vsize)
++  puts('  heap total : ' + stats.heapTotal)
++  puts('  heap used  : ' + stats.heapUsed)
++ }
+
+ exports.Profiler = Plugin.extend({
+   on: {
+     request: function(event) {
+-      this.start = Number(new Date)  
++      this.start = Number(new Date)
++      this.startUsage = process.memoryUsage()
+     },
+     
+     response: function(event) {
+-      puts(Number(new Date) - this.start + ' ms')
++      puts('\nduration: ' + (Number(new Date) - this.start) + ' ms')
++      usage('start', this.startUsage)
++      usage('finish', process.memoryUsage())
+     }
+   }
+ })
+```
+
+## Add libxmljs.node for spec support
+
+    git checkout 350d54d25d3d674ca2fdb152c649f176d327df29
+    
+spec/support/libxmljs.node
+
+
