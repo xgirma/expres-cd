@@ -92,3 +92,33 @@ exports.Logger = Plugin.extend({
 ```javascript
 use(require('express/plugins/common-logger').Logger)
 ```
+
+## Add ContentLength plugin
+
+    git checkout dea4ac986f7cd27cbb7dc2473a7dbef2c77f84e4
+
+lib/express/plugins/content-length.js
+```javascript
+// Express - ContentLength - Copyright TJ Holowaychuk <tj@vision-media.ca> (MIT Licensed)
+
+exports.ContentLength = Plugin.extend({
+  on: {
+    response: function(event) {
+      var response = event.response
+      response.headers['content-length'] =
+        response.headers['content-length'] ||
+          response.body.length
+    }
+  }
+})
+```
+
+    git checkout 87569946f4afcc8fe2a71a5df666d023aa501d2a
+
+usage:
+```javascript
+use(require('express/plugins/content-length').ContentLength)
+```
+
+    git checkout 938dc062d48fa825b453db41d926029fccb27637
+    
