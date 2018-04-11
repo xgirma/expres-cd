@@ -122,3 +122,18 @@ use(require('express/plugins/content-length').ContentLength)
 
     git checkout 938dc062d48fa825b453db41d926029fccb27637
     
+## Add Method-override 
+
+```javascript
+ exports.MethodOverride = Plugin.extend({
+   on: {
+     request: function(event) {
+-      //if (params('__method__'))
+-      //  event.request.
++      if (param('__method__'))
++       event.request.method = param('__method__').toLowerCase()
+     }
+   }
+ })
+\ No newline at end of file
+```
